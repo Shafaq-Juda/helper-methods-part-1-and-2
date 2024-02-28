@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Routes for the Movie resource:
 
   # CREATE
-  post "/movies" => "movies#create", as: :movies  # movies_url and movies_path
+  post "/movies" => "movies#create", as: :movies  # movies_url and movies_path(in view templates we use movies_path instead of route, and in controller action, when redirecting and so on, we should use movies_url [always]).
   get "/movies/new" => "movies#new", as: :new_movie    # new_movies_url and new_movies_path
           
   # READ
