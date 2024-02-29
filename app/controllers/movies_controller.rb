@@ -33,13 +33,15 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @the_movie = Movie.new
-    @the_movie.title = params.fetch(:query_title)
-    @the_movie.description = params.fetch(:query_description)
+    movie_attributes = params.fetch(:movie)
+    @the_movie = Movie.new(movie_attributes)
+    # @the_movie.title = params.fetch(:query_title)
+    # @the_movie.description = params.fetch(:query_description)
+    # we don't need the above 2 lines any more bcaz we got all the movie attributes in first line.
 
     if @the_movie.valid?
       @the_movie.save
-      redirect_to(movies_url, { notice: "Movie created successfully." })
+      redirect_to movies_url, notice: "Movie created successfully." 
     else
       render template: "movies/new"
     end
